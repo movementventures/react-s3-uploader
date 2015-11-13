@@ -29,8 +29,8 @@ var ReactS3Uploader = React.createClass({
             onError: function(message) {
                 console.log("Upload error: " + message);
             },
-            onUploadStart: function(s3upload, clear) {
-                console.log("Upload started: " + s3upload);
+            onUploadStart: function(uploadObj) {
+                console.log("Upload started: " + uploadObj);
             }
         };
     },
@@ -47,7 +47,7 @@ var ReactS3Uploader = React.createClass({
             uploadRequestHeaders: this.props.uploadRequestHeaders,
             contentDisposition: this.props.contentDisposition
         });
-        this.props.onUploadStart(s3upload, this.clear);
+        this.props.onUploadStart({uploadObject: s3upload, clearFunction: this.clear});
     },
 
     clear: function() {
